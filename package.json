@@ -4,8 +4,43 @@
   "description": "React Performance Testing Library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run dev:webpack\" \"npm run dev:express\"",
+    "dev:webpack": "NODE_ENV=development webpack serve --config ./webpack/webpack.dev.js",
+    "dev:express": "NODE_ENV=development PORT=3000 nodemon server/index.js",
+    "build": "NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
+    "serve": "NODE_ENV=production PORT=3000 node server/index.js",
+    "analyze": "NODE_ENV=production ANALYZE=true webpack --config ./webpack/webpack.prod.js"
   },
-  "author": "Timeo",
-  "license": "ISC"
+  "author": "Timeo Williams",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^6.3.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.1.2",
+    "dotenv-webpack": "^7.0.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.63.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "cost-of-modules": "^1.0.1",
+    "express": "^4.17.1"
+  }
 }
