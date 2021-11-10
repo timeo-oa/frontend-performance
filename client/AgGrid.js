@@ -64,16 +64,6 @@ function AgGrid() {
         sortable: true
     }), []);
     
-    // changes, needs to be state
-    // const [rowData, setRowData] = useState();
-
-    // gets called once, no dependencies, loads the grid data
-    // useEffect( ()=> {
-    //     if(rowDefs.length) {
-    //         setRowData(rowDefs)
-    //     }
-    // }, []);
-
     const onGridReady = () => {
         RenderTimer.stop();
     }
