@@ -1,16 +1,13 @@
 import {Random} from 'random-js';
 import {TOTAL_ROWS} from './tableConstants';
 import React from 'react';
-/* A function that will generate random events to be displayed by the EventList
-
-@param: Track ID: Number (20 digits) - Making use of the BigInteger Library: https://silentmatt.com/biginteger/
-@param: Status: String (New or Monitor) w/ associated color (Red Or Yellow)
-@param: Hits: Number: Random integer from 1 - 1000
+/**  A function that will generate random events to be displayed by the EventList
+@param: Track ID: {Number} (20 digits) - Making use of the BigInteger Library: https://silentmatt.com/biginteger/
+@param: Status: {String} (New or Monitor) w/ associated color (Red Or Yellow)
+@param: Hits: {Number}: Random integer from 1 - 1000
 @param: First Detect: Date Time in UTC Format randomized
 @param: Duration: Date time in (mm:ss) ex: (04:09)
 @param: Location: Long & Latitude Coordinates ex: (39.72397°,-93.52994°)
-
-
 Input: No args
 Output: An object with specified row keys & randomized values. Should be 
 agnostic for both ag-grid & react-table
@@ -42,18 +39,6 @@ for (let i = 0; i < TOTAL_ROWS; i += 1) {
     rowDefs[i] = createEvents();
   }
 
-  const agGridRows = {
-    rowData: rowDefs
-
-  }
-
-  const reactTableRows = React.useMemo(
-    () => rowDefs, []
-  )
-
-  export default {
-      agGridRows, 
-      reactTableRows
-  }
+  export default rowDefs
 
 

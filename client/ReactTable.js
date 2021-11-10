@@ -1,12 +1,16 @@
-import { Columns } from '../tableUtils/reactTableColumnDefs';
+import { Columns } from './tableUtils/reactTableColumnDefs';
 import { useTable, useFilters, useSortBy } from 'react-table';
 // A great library for fuzzy filtering/sorting items
 import { matchSorter } from 'match-sorter';
 import React from 'react';
-import { reactTableRows } from '../tableUtils/makeData';
+import { rowDefs } from './tableUtils/makeData';
 // import './App.scss'
 
-function ReactTable() {
+function ReactTable(props) {
+
+    const reactTableRows = React.useMemo(
+        () => rowDefs, []
+      )    
 
     function fuzzyTextFilterFn(rows, id, filterValue) {
         return matchSorter(rows, filterValue, { keys: [row => row.values[id]] })

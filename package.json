@@ -39,8 +39,17 @@
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0"
   },
+  "browser": {
+    "crypto": false
+  },
   "dependencies": {
+    "@ag-grid-community/client-side-row-model": "^26.1.0",
+    "@ag-grid-community/react": "^26.1.0",
+    "@astrouxds/astro-web-components": "^6.0.1",
     "cost-of-modules": "^1.0.1",
-    "express": "^4.17.1"
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "live-server": "^1.2.1",
+    "random-js": "^2.1.0"
   }
 }

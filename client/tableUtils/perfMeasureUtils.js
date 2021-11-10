@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {agGridRows, reactTableRows} from './makeData';
+import {agGridRows, reactTableRows, rowDefs} from './makeData';
 
+//May not need to initialize AgGrid & ReactTable components with row data. 
+//May need to add a boolean in state to deterine whether or not to be using agGridRows or reactTableRows
+//data as rowDefs may be too general for testing. 
 class Wrapper extends Component {
   constructor(props) {
       //Where is this info receiving this from? Are we passing down props in index.js?
@@ -24,7 +27,8 @@ class Wrapper extends Component {
   }
 
   getData = () => {
-    return makeData(DATA_SIZE);
+      //Return agnostic array of events. Default size 1000 rows. Confirm whether it's array or obj
+    return rowDefs;
   }
 
   componentDidUpdate() {
@@ -49,6 +53,7 @@ export class MeasurePerformance {
     this.root = document.getElementById('root');
   }
 
+  //On initialization, we set the number of rerendrers to 1, 
   init() {
     this.max_rerenders = 1;
     this.compList = [];
@@ -62,7 +67,6 @@ export class MeasurePerformance {
   }
 
   setCompList(cmpList) {
-   
     if(compList.length) {
       this.compList = compList;
       this.compSwitcher = this.cycleThroughComponents();
@@ -76,7 +80,8 @@ export class MeasurePerformance {
   getCompList() {
     return this.compList;
   }
-
+ //Making use of methods/operators from the Generator object.
+ //See here for more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
   * cycleThroughComponents() {
     yield* this.compList;
   }
